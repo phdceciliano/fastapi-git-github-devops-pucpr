@@ -1,0 +1,197 @@
+Configuração Inicial
+
+# Configurar nome de usuário
+
+git config --global user.name "Seu Nome"
+
+
+
+# Configurar email
+
+git config --global user.email "seuemail@example.com"
+
+
+ 
+
+Criando um Repositório
+
+# Inicializar um novo repositório Git
+
+git init
+
+
+
+# Clonar um repositório existente
+
+git clone URL_DO_REPOSITORIO
+
+
+
+Trabalhando com o status dos arquivos
+
+# Verificar o status dos arquivos
+
+git status
+
+
+
+# Adicionar arquivos para staging
+
+git add NOME_DO_ARQUIVO
+
+
+
+# Adicionar todos os arquivos para staging
+
+git add .
+
+
+
+Trabalhando com Commits de Mudanças
+
+# Fazer commit das mudanças
+
+git commit -m "Mensagem do commit"
+
+
+
+# Commitar todos os arquivos modificados e adicionar uma mensagem
+
+git commit -am "Mensagem do commit"
+
+
+  
+
+Branching e merging
+
+# Listar branches
+
+git branch
+
+
+
+# Criar um novo branch
+
+git branch NOME_DO_BRANCH
+
+
+
+# Mudar para um branch específico
+
+git checkout NOME_DO_BRANCH
+
+
+
+# Criar e mudar para um novo branch
+
+git checkout -b NOME_DO_BRANCH
+
+
+
+# Mesclar um branch no branch atual
+
+git merge NOME_DO_BRANCH
+
+
+
+# Deletar um branch
+
+git branch -d NOME_DO_BRANCH
+
+
+
+Sincronização com Repositório Remoto
+
+# Adicionar um repositório remoto
+
+git remote add origin URL_DO_REPOSITORIO
+
+
+
+# Verificar repositórios remotos
+
+git remote -v
+
+
+
+# Puxar mudanças do repositório remoto
+
+git pull origin BRANCH_NAME
+
+
+
+# Enviar mudanças para o repositório remoto
+
+git push origin BRANCH_NAME
+
+
+
+Visualizando o histórico
+
+# Ver o histórico de commits
+
+git log
+
+
+
+# Ver o histórico de commits com diffs de um arquivo específico
+
+git log -p NOME_DO_ARQUIVO
+
+
+
+# Ver um gráfico do histórico de commits
+
+git log --graph --oneline --all
+
+
+
+Desfazer mudanças
+
+# Desfazer mudanças no arquivo antes do commit
+
+git checkout -- NOME_DO_ARQUIVO
+
+
+
+# Resetar staging area para o último commit
+
+git reset HEAD NOME_DO_ARQUIVO
+
+
+
+# Resetar para um commit específico (permanente)
+
+git reset --hard ID_DO_COMMIT
+
+
+
+Comandos úteis
+
+# Ver diferenças entre arquivos
+
+git diff
+
+
+
+# Ver diferenças entre o staging e o último commit
+
+git diff --staged
+
+
+
+# Stash mudanças temporariamente
+
+git stash
+
+
+
+# Aplicar mudanças stashed
+
+git stash apply
+
+
+
+# Listar stashes
+
+git stash list
