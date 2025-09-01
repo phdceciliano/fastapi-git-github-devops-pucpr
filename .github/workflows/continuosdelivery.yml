@@ -1,18 +1,21 @@
-name: Continuos Delivery
+name: Continuous Delivery
 on:
   push:
     branches:
-      - "**" # ou qualquer outro tipo de branch
+      - main
+
 jobs:
   deliver:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out source repository
+      - name: Check out repository
         uses: actions/checkout@v3
-      - name: Simulando Continuous Delivery
+
+      - name: Criar zip do projeto
+        run: zip projeto.zip main.py README.md
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-            name: projeto.zip
-            path: |
-              main.py
-              README.md
+          name: projeto
+          path: projeto.zip
