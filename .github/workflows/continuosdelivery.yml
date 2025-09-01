@@ -19,3 +19,12 @@ jobs:
         with:
           name: projeto
           path: projeto.zip
+  deploy:
+    runs-on: ubuntu-latest
+    needs: deliver
+    steps:
+        - uses: actions/download-artifact@v5
+          with:
+            name: projetozipado.zip
+        - name: Display structure of downloaded files
+          run: ls -R
