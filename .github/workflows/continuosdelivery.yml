@@ -25,6 +25,6 @@ jobs:
     steps:
         - uses: actions/download-artifact@v5
           with:
-            name: projeto.zip
+            name: projeto
         - name: Display structure of downloaded files
           run: ls -R
