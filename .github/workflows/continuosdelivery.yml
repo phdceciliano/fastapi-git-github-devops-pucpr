@@ -16,6 +16,8 @@ jobs:
           python-version: "3.11"
       - name: flake8 Lint
         uses: py-actions/flake8@v2
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.2
       - name: Simulando Continuous Delivery
         uses: actions/upload-artifact@v4
         with:
