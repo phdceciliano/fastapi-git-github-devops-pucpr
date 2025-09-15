@@ -17,16 +17,16 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
 
-  discord:
-    runs-on: ubuntu-latest
-    needs: build
-    if: always()
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Send Discord notification
-        uses: Sniddl/discord-commits@v1.6  # Use a mesma action do exemplo
+      - name: Discord Webhook
+        uses: tsickert/discord-webhook@v5.1.0
         with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          template: "avatar-with-link"  # Template que gera links
-          include-extras: true  # Inclui informações extras
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: "🚀 **PR #${{ github.event.number }}**: ${{ github.event.pull_request.title }}"
+          embeds: |
+            [
+              {
+                "title": "Ver Pull Request",
+                "url": "${{ github.event.pull_request.html_url }}",
+                "color": 5814783
+              }
+            ]
