@@ -1,0 +1,20 @@
+  name: Discord
+  on:
+    - push
+  discord:
+    runs-on: ubuntu-latest
+    needs: build
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Discord Webhook
+        uses: tsickert/discord-webhook@v5.1.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: |
+            🔄 **PR #${{ github.event.number }}** por **@${{ github.actor }}**
+            **${{ github.event.pull_request.title }}**
+            🔗 **Link:** ${{ github.event.pull_request.html_url }}
+            🏷 **Repositório:** ${{ github.repository }}
