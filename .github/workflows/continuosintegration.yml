@@ -22,6 +22,7 @@ jobs:
     needs: build  # Garante que só roda se o build passar
     if: always()  # Roda mesmo se o build falhar
     steps:
+<<<<<<< HEAD
       - uses: actions/checkout@v3
 
       - name: Send Discord notification
@@ -30,3 +31,12 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
           args: "🚀 Pull Request #${{ github.event.number }} - ${{ github.event.pull_request.title }}"
+=======
+    - uses: actions/checkout@v3
+    - name: Run Discord Webhook
+      uses: Sniddl/discord-commits@v1.6
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        template: "avatar-with-link"
+        include-extras: true
+>>>>>>> cf9418adf9807a0708c00d118a134e976de85981
