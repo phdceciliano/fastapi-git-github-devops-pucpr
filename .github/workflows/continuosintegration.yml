@@ -16,3 +16,12 @@ jobs:
           python-version: "3.11"
       - name: flake8 Lint
         uses: py-actions/flake8@v2
+
+  discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Message
+        uses: sarge841/action-discord-webhook@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: 'A new commit by ${{ github.actor }}!'
