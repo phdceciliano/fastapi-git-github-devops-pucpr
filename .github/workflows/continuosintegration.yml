@@ -18,25 +18,15 @@ jobs:
         uses: py-actions/flake8@v2
 
   discord:
-    runs-on: ubuntu-latest  # Corrigido: ubuntu-latest com hífen
-    needs: build  # Garante que só roda se o build passar
-    if: always()  # Roda mesmo se o build falhar
+    runs-on: ubuntu-latest
+    needs: build  # Só executa se o build passar
+    if: always()  # Roda mesmo se o build falhar (opcional)
     steps:
-<<<<<<< HEAD
       - uses: actions/checkout@v3
-
+      
       - name: Send Discord notification
-        uses: Ilshidur/action-discord@0.3.1  # Action mais confiável
+        uses: Ilshidur/action-discord@0.3.1
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}  # Corrigido: WEBHOOK (não MEBHOOK)
         with:
           args: "🚀 Pull Request #${{ github.event.number }} - ${{ github.event.pull_request.title }}"
-=======
-    - uses: actions/checkout@v3
-    - name: Run Discord Webhook
-      uses: Sniddl/discord-commits@v1.6
-      with:
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        template: "avatar-with-link"
-        include-extras: true
->>>>>>> cf9418adf9807a0708c00d118a134e976de85981
