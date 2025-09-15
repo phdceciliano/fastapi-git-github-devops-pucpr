@@ -33,24 +33,8 @@ jobs:
         uses: tsickert/discord-webhook@v5.1.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          content: " **PR #${{ github.event.number }}** por **@${{ github.actor }}**\n**${{ github.event.pull_request.title }}**"
-          embeds: |
-            [
-              {
-                "title": "🔗 Abrir Pull Request",
-                "url": "${{ github.event.pull_request.html_url }}",
-                "color": 5814783,
-                "fields": [
-                  {
-                    "name": "Repositório",
-                    "value": "${{ github.repository }}",
-                    "inline": true
-                  },
-                  {
-                    "name": "Status",
-                    "value": "Em revisão ",
-                    "inline": true
-                  }
-                ]
-              }
-            ]
+          content: |
+            🔄 **PR #${{ github.event.number }}** por **@${{ github.actor }}**
+            **${{ github.event.pull_request.title }}**
+            🔗 **Link:** ${{ github.event.pull_request.html_url }}
+            🏷 **Repositório:** ${{ github.repository }}
