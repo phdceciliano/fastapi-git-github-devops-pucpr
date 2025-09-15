@@ -19,14 +19,14 @@ jobs:
 
   discord:
     runs-on: ubuntu-latest
-    needs: build  # Só executa se o build passar
-    if: always()  # Roda mesmo se o build falhar (opcional)
+    needs: build
+    if: always()
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Send Discord notification
-        uses: Ilshidur/action-discord@0.3.1
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}  # Corrigido: WEBHOOK (não MEBHOOK)
+        uses: Sniddl/discord-commits@v1.6  # Use a mesma action do exemplo
         with:
-          args: "🚀 Pull Request #${{ github.event.number }} - ${{ github.event.pull_request.title }}"
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          template: "avatar-with-link"  # Template que gera links
+          include-extras: true  # Inclui informações extras
