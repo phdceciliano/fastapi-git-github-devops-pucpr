@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Send Discord Notification
-        uses: Sniddl/discord-commits@v1.6
+        uses: Sniddl/discord-commits@v1.6 # Action que possui compatibilidade com o que é requerido
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           template: "avatar-with-link"
