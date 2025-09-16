@@ -24,7 +24,8 @@ async def listar_treinos(aluno_id: str = None):
     if aluno_id:
         if aluno_id not in alunos_db:
             raise HTTPException(status_code=404, detail="Aluno não encontrado")
-        return [treino for treino in treinos_db.values() if treino['aluno_id'] == aluno_id]
+        return [treino for treino in treinos_db.values()
+                if treino['aluno_id'] == aluno_id]
     return list(treinos_db.values())
 
 
@@ -38,7 +39,10 @@ async def buscar_treino(treino_id: str):
 @router.put("/{treino_id}", response_model=Treino)
 async def atualizar_treino(treino_id: str, treino_update: TreinoUpdate):
     if treino_id not in treinos_db:
-        raise HTTPException(status_code=404, detail="Treino não encontrado")
+        raise HTTPException(
+            status_code=404,
+            detail="Treino não encontrado"
+        )
 
     treino_atual = treinos_db[treino_id]
     update_data = treino_update.dict(exclude_unset=True)

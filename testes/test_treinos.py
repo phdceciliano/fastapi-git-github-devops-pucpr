@@ -22,5 +22,7 @@ def test_criar_treino_aluno_inexistente(test_client):
         "exercicios": ["Supino"],
         "duracao_minutos": 60
     }
-    response = test_client.post("/treinos/", json=treino_data)
+    response = test_client.post(
+        "/treinos/",
+        json=treino_data)
     assert response.status_code == 404

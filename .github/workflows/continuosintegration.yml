@@ -18,15 +18,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: flake8 Lint
-        uses: py-actions/flake8@v2
-        with:
-          source: "./src"
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Run flake8 lint
+        run: flake8 src/ tests/ --max-line-length=88 --ignore=E203,W503
 
   test:
     runs-on: ubuntu-latest
     name: Run Tests
-    needs: lint  # ⬅️ IMPORTANTE: Só executa se o lint passar
+    needs: lint
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
