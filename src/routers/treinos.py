@@ -15,7 +15,7 @@ async def criar_treino(treino: Treino):
     treino_id = str(uuid.uuid4())
     treino.id = treino_id
     treino.data = datetime.now().isoformat()
-    treinos_db[treino_id] = treino.dict()
+    treinos_db[treino_id] = treino.model_dump()
     return treino
 
 
@@ -45,7 +45,7 @@ async def atualizar_treino(treino_id: str, treino_update: TreinoUpdate):
         )
 
     treino_atual = treinos_db[treino_id]
-    update_data = treino_update.dict(exclude_unset=True)
+    update_data = treino_update.model_dump(exclude_unset=True)
 
     if 'aluno_id' in update_data and update_data['aluno_id'] not in alunos_db:
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
