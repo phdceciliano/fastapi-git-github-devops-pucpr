@@ -12,7 +12,7 @@ async def criar_aluno(aluno: Aluno):
     aluno_id = str(uuid.uuid4())
     aluno.id = aluno_id
     aluno.data_criacao = datetime.now().isoformat()
-    alunos_db[aluno_id] = aluno.dict()
+    alunos_db[aluno_id] = aluno.model_dump()
     return aluno
 
 
@@ -36,7 +36,7 @@ async def atualizar_aluno(aluno_id: str, aluno_update: AlunoUpdate):
         raise HTTPException(status_code=404, detail="Aluno não encontrado")
 
     aluno_atual = alunos_db[aluno_id]
-    update_data = aluno_update.dict(exclude_unset=True)
+    update_data = aluno_update.model_dump(exclude_unset=True)
     aluno_atual.update(update_data)
     alunos_db[aluno_id] = aluno_atual
     return aluno_atual
