@@ -4,7 +4,7 @@ from src.routers import alunos, treinos
 app = FastAPI(title="Sistema Academia CRUD", version="1.0.0")
 
 
-# Incluir routers
+# Incluir routers no sistema
 app.include_router(alunos.router, prefix="/alunos", tags=["alunos"])
 app.include_router(treinos.router, prefix="/treinos", tags=["treinos"])
 
